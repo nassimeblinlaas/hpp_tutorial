@@ -1,5 +1,14 @@
-from hpp.corbaserver.pr2 import Robot
-robot = Robot ('pr2')
+from hpp.corbaserver.robot import Robot
+
+Robot.packageName = 'hpp_tutorial'
+Robot.urdfSuffix = ''
+Robot.srdfSuffix = ''
+Robot.urdfName = 'pr2'
+
+robot = Robot ('pr2', "planar")
+
+robot.tf_root = 'base_footprint'
+
 robot.setJointBounds ("base_joint_xy", [-4, -3, -5, -3])
 
 from hpp_ros import ScenePublisher
@@ -30,38 +39,7 @@ ps.loadObstacleFromUrdf ("iai_maps", "kitchen_area", "")
 
 ps.setInitialConfig (q_init)
 ps.addGoalConfig (q_goal)
-ps.selectPathPlanner ("PRM")
-#ps.solve ()
-
-ps.prepareSolveStepByStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.executeOneStep()
-ps.finishSolveStepByStep()
+ps.solve ()
 
 from hpp_ros import PathPlayer
 pp = PathPlayer (robot.client, r)

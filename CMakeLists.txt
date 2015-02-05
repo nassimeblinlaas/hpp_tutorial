@@ -62,12 +62,17 @@ SET(CATKIN_PACKAGE_SHARE_DESTINATION
   ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME})
 
 install(FILES launch/tutorial.launch
+							launch/nassime_tutorial.launch
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
   )
 install(FILES urdf/pr2.urdf
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
+  						urdf/robot_sphere_nassime.urdf
+  						urdf/robot_cylindre_nassime.urdf
+							urdf/env_nassime.urdf
+	DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
   )
 install(FILES srdf/pr2.srdf 
+							srdf/robot_nassime.srdf
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/srdf
   )
 install(FILES rviz/config.rviz
@@ -77,6 +82,11 @@ install (FILES
   src/hpp/corbaserver/pr2/robot.py
   src/hpp/corbaserver/pr2/__init__.py
   DESTINATION ${PYTHON_SITELIB}/hpp/corbaserver/pr2)
+
+install (FILES
+  src/hpp/corbaserver/nassime/robot_nassime.py
+  src/hpp/corbaserver/nassime/__init__.py
+  DESTINATION ${PYTHON_SITELIB}/hpp/corbaserver/nassime)
 
 # Installation for documentation
 install(FILES launch/tutorial.launch

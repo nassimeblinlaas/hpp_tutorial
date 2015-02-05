@@ -34,8 +34,7 @@ FINDPYTHON()
 SETUP_PROJECT()
 
 # Catkin stuff
-FIND_PACKAGE(catkin REQUIRED COMPONENTS
-  hpp_ros)
+FIND_PACKAGE(catkin)
 CATKIN_PACKAGE()
 
 # Activate hpp-util logging if requested
@@ -46,7 +45,6 @@ ENDIF()
 
 ADD_DOC_DEPENDENCY("hpp-core >= 3")
 ADD_REQUIRED_DEPENDENCY("hpp-corbaserver >= 3")
-ADD_REQUIRED_DEPENDENCY("hpp_ros")
 
 # Create and install executable running the corba server
 ADD_EXECUTABLE (hpp-tutorial-server
@@ -61,27 +59,39 @@ INSTALL (TARGETS hpp-tutorial-server DESTINATION ${CMAKE_INSTALL_BINDIR})
 SET(CATKIN_PACKAGE_SHARE_DESTINATION
   ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME})
 
-install(FILES launch/tutorial.launch
-							launch/nassime_tutorial.launch
+install(FILES
+  launch/tutorial.launch
+  launch/tutorial_manipulation.launch
+	launch/nassime_tutorial.launch
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
   )
-install(FILES urdf/pr2.urdf
-  						urdf/robot_sphere_nassime.urdf
-  						urdf/robot_cylindre_nassime.urdf
-							urdf/env_nassime.urdf
-	DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
+install(FILES
+  urdf/pr2.urdf
+  urdf/box.urdf
+	urdf/robot_sphere_nassime.urdf
+	urdf/robot_cylindre_nassime.urdf
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
   )
-install(FILES srdf/pr2.srdf 
-							srdf/robot_nassime.srdf
+install(FILES
+  srdf/pr2.srdf
+  srdf/pr2_manipulation.srdf
+  srdf/box.srdf
+	srdf/robot_nassime.srdf
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/srdf
   )
-install(FILES rviz/config.rviz
+install(FILES
+  rviz/config.rviz
+  rviz/config_manipulation.rviz
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/rviz
   )
 install (FILES
   src/hpp/corbaserver/pr2/robot.py
   src/hpp/corbaserver/pr2/__init__.py
   DESTINATION ${PYTHON_SITELIB}/hpp/corbaserver/pr2)
+install (FILES
+  src/hpp/corbaserver/manipulation/pr2/robot.py
+  src/hpp/corbaserver/manipulation/pr2/__init__.py
+  DESTINATION ${PYTHON_SITELIB}/hpp/corbaserver/manipulation/pr2)
 
 install (FILES
   src/hpp/corbaserver/nassime/robot_nassime.py
@@ -89,11 +99,15 @@ install (FILES
   DESTINATION ${PYTHON_SITELIB}/hpp/corbaserver/nassime)
 
 # Installation for documentation
-install(FILES launch/tutorial.launch
+install(FILES
+  launch/tutorial.launch
+  launch/tutorial_manipulation.launch
   DESTINATION
   ${CMAKE_INSTALL_DATAROOTDIR}/doc/${PROJECT_NAME}/doxygen-html/launch
   )
-install(FILES urdf/pr2.urdf
+install(FILES
+  urdf/pr2.urdf
+  urdf/box.urdf
   DESTINATION
   ${CMAKE_INSTALL_DATAROOTDIR}/doc/${PROJECT_NAME}/doxygen-html/urdf
   )

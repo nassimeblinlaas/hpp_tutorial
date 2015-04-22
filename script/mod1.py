@@ -35,7 +35,7 @@ rank = robot.rankInConfiguration ['r_elbow_flex_joint']
 q_goal [rank] = -0.5
 r (q_goal)
 
-ps.loadObstacleFromUrdf ("iai_maps", "kitchen_area", "")
+ps.loadObstacleFromUrdf ("iai_maps", "kitchen_area", "kitchen")
 
 ps.setInitialConfig (q_init)
 ps.addGoalConfig (q_goal)

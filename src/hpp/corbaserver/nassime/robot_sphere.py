@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python
 # Copyright (c) 2014 CNRS
 # Author: Florent Lamiraux
@@ -29,13 +30,13 @@ from hpp.corbaserver.robot import Robot as Parent
 #
 #  At creation of an instance, the urdf and srdf files are loaded using
 #  idl interface hpp::corbaserver::Robot::loadRobotModel.
-class Robot (Parent):
+class RobotSphere (Parent):
     ##
     #  Information to retrieve urdf and srdf files.
     packageName = "hpp_tutorial"
     ##
     #  Information to retrieve urdf and srdf files.
-    urdfName = "robot_nassime"
+    urdfName = "robot_sphere"
     urdfSuffix = ""
     srdfSuffix = ""
 

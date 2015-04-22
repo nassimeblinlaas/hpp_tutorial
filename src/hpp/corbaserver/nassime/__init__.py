@@ -16,4 +16,5 @@
 # hpp-corbaserver.  If not, see
 # <http://www.gnu.org/licenses/>.
 
-from robot_nassime import Robot
+from robot_sphere import RobotSphere
+from robot_cursor import RobotCursor

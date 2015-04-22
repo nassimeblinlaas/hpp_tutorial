@@ -29,16 +29,16 @@ from hpp.corbaserver.robot import Robot as Parent
 #
 #  At creation of an instance, the urdf and srdf files are loaded using
 #  idl interface hpp::corbaserver::Robot::loadRobotModel.
-class Robot (Parent):
+class RobotCursor (Parent):
     ##
     #  Information to retrieve urdf and srdf files.
     packageName = "hpp_tutorial"
     ##
     #  Information to retrieve urdf and srdf files.
-    urdfName = "robot_nassime"
+    urdfName = "robot_cursor"
     urdfSuffix = ""
     srdfSuffix = ""
 
     def __init__ (self, robotName, load = True):
         Parent.__init__ (self, robotName, "freeflyer", load)
-        self.tf_root = "base_footprint"
+        self.tf_root = 'base_link' # le nom du tf_root est libre

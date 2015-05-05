@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+	<robot name="robot_cylindre_nassime">
+
+		<!-- lien 1 -->
+		<link name="base_link">
+			<visual>
+				<origin rpy="0 0 0" xyz="0 0 0"/>
+				<geometry>
+					<cylinder length="0.6" radius="0.2"/>
+				</geometry>
+			</visual>
+
+			<collision>
+				<origin rpy="0 0 0" xyz="0 0 0"/>
+				<geometry>
+					<cylinder length="0.6" radius="0.2"/>
+				</geometry>
+    	</collision>
+
+		</link>
+		<!-- fin lien 1 -->
+
+	</robot>

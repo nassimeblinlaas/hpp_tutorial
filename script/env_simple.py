@@ -1,8 +1,8 @@
 from hpp.corbaserver import * 
-from hpp.corbaserver.nassime import RobotCursor
+from hpp.corbaserver.nassime import RobotSphere
 
-robot = RobotCursor ('robot_cursor', True)
-robot.setJointBounds ("base_joint_xyz", [0, 9.5, 0, 12, 0, 1])
+robot = RobotSphere ('robot_sphere', True)
+robot.setJointBounds ("base_joint_xyz", [-2, 12, 0, 12, 0, 1])
 robot.tf_root = 'base_link'
 
 from hpp.corbaserver import ProblemSolver
@@ -14,15 +14,16 @@ v = Viewer (ps)
 
 q_init = robot.getCurrentConfig ()
 q_goal = q_init [::]
-q_init [0:3] = [0, 1.5, 0.5]
+#q_init [0:3] = [0, 1.5, 0.5]
+q_init [0:3] = [1, 2, 0]
 v (q_init)
 q_goal [0:3] = [9.15, 7.5, 0.5]
 v (q_goal)
 
-v.client.gui.applyConfiguration("scene_hpp_/robot_cursor",q_init)
+#v.client.gui.applyConfiguration("scene_hpp_/robot_shpere",q_init)
 
 #v.loadObstacleModel ("iai_maps", "kitchen_area", "kitchen")
-v.loadObstacleModel ("iai_maps", "labyrinth2", "labyrinth")
+v.loadObstacleModel ("iai_maps", "env_simple", "simple")
 
 
 ps.setInitialConfig (q_init)

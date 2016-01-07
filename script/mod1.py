@@ -1,12 +1,21 @@
-from hpp.corbaserver.pr2 import Robot
-robot = Robot ('pr2')
+from hpp.corbaserver.robot import Robot
+
+Robot.packageName = 'hpp_tutorial'
+Robot.urdfSuffix = ''
+Robot.srdfSuffix = ''
+Robot.urdfName = 'pr2'
+
+robot = Robot ('pr2', "planar")
+
+robot.tf_root = 'base_footprint'
+
 robot.setJointBounds ("base_joint_xy", [-4, -3, -5, -3])
+
+from hpp_ros import ScenePublisher
+r = ScenePublisher (robot)
 
 from hpp.corbaserver import ProblemSolver
 ps = ProblemSolver (robot)
-
-from hpp.gepetto import Viewer
-r = Viewer (ps)
 
 q_init = robot.getCurrentConfig ()
 q_goal = q_init [::]
@@ -26,11 +35,10 @@ rank = robot.rankInConfiguration ['r_elbow_flex_joint']
 q_goal [rank] = -0.5
 r (q_goal)
 
-r.loadObstacleModel("iai_maps", "kitchen_area", "kitchen")
+ps.loadObstacleFromUrdf ("iai_maps", "kitchen_area", "kitchen")
 
 ps.setInitialConfig (q_init)
 ps.addGoalConfig (q_goal)
-ps.selectPathPlanner ("PRM")
 ps.solve ()
 
 from hpp_ros import PathPlayer

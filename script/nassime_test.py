@@ -30,7 +30,7 @@ ps.addGoalConfig (q_goal)
 
 ps.clearRoadmap()
 
-ps.selectPathPlanner("interactive")
+#ps.selectPathPlanner("interactive")
 
 #from hpp.gepetto.viewer import GuiClient
 #c = GuiClient()

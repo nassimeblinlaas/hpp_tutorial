@@ -30,7 +30,7 @@ ps.addGoalConfig (q_goal)
 
 ps.clearRoadmap()
 
-#ps.selectPathPlanner("interactive")
+ps.selectPathPlanner("interactive")
 
 #from hpp.gepetto.viewer import GuiClient
 #c = GuiClient()
@@ -42,10 +42,10 @@ ps.clearRoadmap()
 
 white=[1.0,1.0,1.0,1.0]
 brown=[0.85,0.75,0.15,0.5]
+ps.addPathOptimizer ("RandomShortcut")
 v.solveAndDisplay("rm1",50,white,0.0,1,brown)
 #ps.solve()
 
-ps.addPathOptimizer ("RandomShortcut")
 
 from hpp.gepetto import PathPlayer
 pp = PathPlayer (robot.client, v)

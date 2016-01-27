@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-	<robot name="robot_cylindre_nassime">
+	<robot name="robot_cylindre">
 
 		<!-- lien 1 -->
 		<link name="base_link">

@@ -1,0 +1,5 @@
+ 
+<robot name="robot_cursor">
+  <disable_collisions link1="base_link"
+		      link2="up_link" />
+</robot>

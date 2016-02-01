@@ -6,14 +6,14 @@
 			<visual>
 				<origin rpy="0 0 0" xyz="0 0 0"/>
 				<geometry>
-					<box size="0.5 0.5 0.5"/>
+					<box size="0.2 0.2 0.2"/>
 			   </geometry>
 			</visual>
 
 			<collision>
 				<origin rpy="0 0 0" xyz="0 0 0"/>
 				<geometry>
-					<box size="0.5 0.5 0.5"/>
+					<box size="0.2 0.2 0.2"/>
 			   </geometry>
     		</collision>
 		</link>
@@ -22,15 +22,15 @@
 		<!-- lien 2--> 
 		<link name="up_link">
 			<visual>
-				<origin rpy="0 0 0" xyz="0.5 0 0.5"/>
+				<origin rpy="0 0 0" xyz="0.2 0 0.3"/>
 				<geometry>
-					<box size="0.5 0.5 1.5"/>
+					<box size="0.2 0.2 0.8"/>
 			   </geometry>
 			</visual>
 			<collision>
-				<origin rpy="0 0 0" xyz="0.5 0 0.5"/>
+				<origin rpy="0 0 0" xyz="0.2 0 0.2"/>
 				<geometry>
-					<box size="0.5 0.5 1.5"/>
+					<box size="0.2 0.2 0.8"/>
 		      </geometry>
 	    	</collision>
 		</link>

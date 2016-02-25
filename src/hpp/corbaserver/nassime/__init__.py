@@ -19,3 +19,5 @@
 from robot_sphere import RobotSphere
 from robot_cursor import RobotCursor
 from robot_L import RobotL
+from robot_chaine import RobotChaine
+from robot_telephone import RobotTelephone

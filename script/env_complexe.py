@@ -14,7 +14,7 @@ q_goal = q_init [::]
 q_init [0:3] = [0, 0, 0]
 v (q_init)
 q_goal [0:7] = [10, 6, 0.11, 0.707460067, 0.706753314, 0, 0]
-q_goal [0:7] = [9.6, 6, 0.11, 0.707460067, 0.706753314, 0, 0]
+q_goal [0:7] = [9.7, 6, 0.11, 0.707460067, 0.706753314, 0, 0]
 
 v (q_goal)
 
@@ -28,8 +28,10 @@ ps.selectPathPlanner("interactive")
 
 white=[1.0,1.0,1.0,1.0]
 brown=[0.85,0.75,0.15,0.5]
+black=[0, 0, 0, 1]
+
 ps.addPathOptimizer ("RandomShortcut")
-v.solveAndDisplay("rm1",50,white,0.00,1,brown)
+v.solveAndDisplay("rm1",50,white,0.00,1,black)
 
 from hpp.gepetto import PathPlayer
 pp = PathPlayer (robot.client, v)

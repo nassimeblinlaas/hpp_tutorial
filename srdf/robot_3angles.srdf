@@ -1,0 +1,9 @@
+<robot name="robot_3angles">
+  <disable_collisions link1="base_link"
+		      link2="up_link" />
+ <disable_collisions link1="base_link"
+		      link2="up_link2" />
+  <disable_collisions link1="up_link"
+		      link2="up_link2" />
+
+</robot>

@@ -4,8 +4,8 @@ from hpp.corbaserver import *
 #robot = RobotSphere ('robot_sphere', True)
 #from hpp.corbaserver.nassime import RobotCursor
 #robot = RobotCursor ('robot_cursor', True)
-from hpp.corbaserver.nassime import RobotL
-robot = RobotL ('robot_L', True)
+from hpp.corbaserver.nassime import Robot3Angles
+robot = Robot3Angles ('robot_3angles', True)
 
 robot.setJointBounds ("base_joint_xyz", [-4, 12, -4, 12, -2, 4])
 robot.tf_root = 'base_link'

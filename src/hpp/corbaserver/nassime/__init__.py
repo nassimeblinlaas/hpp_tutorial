@@ -21,3 +21,4 @@ from robot_cursor import RobotCursor
 from robot_L import RobotL
 from robot_chaine import RobotChaine
 from robot_telephone import RobotTelephone
+from robot_3angles import Robot3Angles 

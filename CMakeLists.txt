@@ -66,7 +66,11 @@ install(FILES
   urdf/door.urdf
   urdf/box_color.urdf
   urdf/rod.urdf
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
+	urdf/robot_sphere.urdf
+	urdf/robot_cylindre.urdf
+	urdf/robot_cursor.urdf
+	urdf/robot_L.urdf
+	DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
   )
 install(FILES
   srdf/pr2.srdf
@@ -75,6 +79,10 @@ install(FILES
   srdf/cup.srdf
   srdf/rod.srdf
   srdf/door.srdf
+	srdf/robot_sphere.srdf
+	srdf/robot_cursor.srdf
+	srdf/robot_cylindre.srdf
+	srdf/robot_L.srdf
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/srdf
   )
 install(FILES
@@ -93,6 +101,15 @@ install (FILES
   src/hpp/corbaserver/manipulation/pr2/robot.py
   src/hpp/corbaserver/manipulation/pr2/__init__.py
   DESTINATION ${PYTHON_SITELIB}/hpp/corbaserver/manipulation/pr2)
+
+install (FILES
+  src/hpp/corbaserver/nassime/robot_sphere.py
+	src/hpp/corbaserver/nassime/robot_cursor.py
+	src/hpp/corbaserver/nassime/robot_cylindre.py
+	src/hpp/corbaserver/nassime/robot_L.py
+	src/hpp/corbaserver/nassime/robot_chaine.py
+  src/hpp/corbaserver/nassime/__init__.py
+  DESTINATION ${PYTHON_SITELIB}/hpp/corbaserver/nassime)
 
 # Installation for documentation
 install(FILES

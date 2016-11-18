@@ -2,10 +2,10 @@ from hpp.corbaserver import *
 
 #from hpp.corbaserver.nassime import RobotChaise
 #robot = RobotChaise ('robot_chaise', True)
-from hpp.corbaserver.nassime import Robot3Angles
-robot = Robot3Angles ('robot_L', True)
-#from hpp.corbaserver.nassime import RobotMesh
-#robot = RobotMesh ('robot_mesh', True)
+#from hpp.corbaserver.nassime import Robot3Angles
+#robot = Robot3Angles ('robot_L', True)
+from hpp.corbaserver.nassime import RobotMesh
+robot = RobotMesh ('robot_mesh', True)
 
 robot.setJointBounds ("base_joint_xyz", [-4, 12, -4, 12, -2, 4])
 robot.setJointBounds ("base_joint_xyz", [-4, 20, -4, 12, -2, 4])

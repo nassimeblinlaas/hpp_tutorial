@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+	<robot name="robot_mesh">
+		<link name="base_link">
+                  <visual>
+                    <origin rpy="0 0 0" xyz="1.31 0.875 2"/>
+                    <geometry>
+                      <mesh filename="package://hpp_tutorial/meshes/Chair.dae"/>
+                    </geometry>
+                  </visual>
+                  <collision> 
+                    <origin rpy="0 0 0" xyz="1.31 0.875 2"/>
+                    <geometry>
+                      <mesh filename="package://hpp_tutorial/meshes/Chair.dae"/>
+                    </geometry>
+                  </collision> 
+		</link>
+	</robot>

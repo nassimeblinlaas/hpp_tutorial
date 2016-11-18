@@ -72,6 +72,8 @@ install(FILES
 	urdf/robot_3angles.urdf
 	urdf/robot_chaine.urdf
 	urdf/robot_telephone.urdf
+	urdf/robot_mesh.urdf
+	urdf/robot_chaise.urdf
 	DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
   )
 install(FILES
@@ -88,12 +90,17 @@ install(FILES
 	urdf/robot_chaine.urdf
 	srdf/robot_chaine.srdf
 	srdf/robot_telephone.srdf
+	srdf/robot_mesh.srdf
+	srdf/robot_chaise.srdf
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/srdf
   )
 install(FILES
   meshes/box.dae
   meshes/telephone.dae
   meshes/base.dae
+  meshes/cone.dae
+  meshes/cone_decal.dae
+  meshes/cone_centre.dae
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/meshes
   )
 install (FILES
@@ -117,6 +124,8 @@ install (FILES
 	src/hpp/corbaserver/nassime/robot_3angles.py
 	src/hpp/corbaserver/nassime/robot_chaine.py
 	src/hpp/corbaserver/nassime/robot_telephone.py
+	src/hpp/corbaserver/nassime/robot_mesh.py
+	src/hpp/corbaserver/nassime/robot_chaise.py
   src/hpp/corbaserver/nassime/__init__.py
   DESTINATION ${PYTHON_SITELIB}/hpp/corbaserver/nassime)
 

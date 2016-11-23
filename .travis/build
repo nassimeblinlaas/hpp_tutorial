@@ -1,0 +1,156 @@
+#!/bin/bash
+set -ev
+
+# Directories.
+root_dir=`pwd`
+build_dir="$root_dir/_travis/build"
+install_dir="$root_dir/_travis/install"
+export DEVEL_DIR="$root_dir/_travis/"
+
+# Shortcuts.
+git_clone="git clone --quiet"
+git_submodule="git submodule --quiet update --init"
+git_branch=${TRAVIS_BRANCH}
+
+# Create layout.
+rm -rf "$build_dir" "$install_dir"
+mkdir -p "$build_dir"
+mkdir -p "$install_dir"
+
+# Setup environment variables.
+export LD_LIBRARY_PATH="$install_dir/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$install_dir/lib/`dpkg-architecture -qDEB_BUILD_MULTIARCH`:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="$install_dir/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="$install_dir/lib/`dpkg-architecture -qDEB_BUILD_MULTIARCH`/pkgconfig:$PKG_CONFIG_PATH"
+# This is a hack for travis
+export PYTHONPATH="/usr/lib/python2.7/dist-packages:$PYTHONPATH"
+
+cmake_args="-DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_INSTALL_PREFIX:STRING='$install_dir' -DCMAKE_BUILD_TYPE=Release"
+make_args="-s -j4"
+
+install_eigen3()
+{
+    echo "--> Compiling Eigen"
+    mkdir -p "$build_dir"
+    cd "$build_dir"
+    wget --quiet -O - "http://bitbucket.org/eigen/eigen/get/3.2.4.tar.bz2" | tar -xj
+    mv eigen-eigen-10219c95fe65 eigen3
+    cd "$build_dir/eigen3"
+    mkdir build
+    cd build
+    cmake $cmake_args -Dpkg_config_libdir="$install_dir/lib" ..
+    make $make_args install > /dev/null
+}
+
+# 3 mandatory options: url, extracted directory name, tar options
+install_dep_from_tar()
+{
+    echo "--> Compiling $2 from $1"
+    mkdir -p "$build_dir"
+    cd "$build_dir"
+    wget --quiet -O - "$1" | tar $3;
+    cd "$build_dir/$2"
+    mkdir build
+    cd build
+    cmake $cmake_args ..
+    make $make_args install > /dev/null
+}
+
+install_doxygen()
+{
+    echo "--> Installing Doxygen"
+    mkdir -p "$build_dir"
+    cd "$build_dir"
+    wget --quiet -O - "ftp://ftp.stack.nl/pub/users/dimitri/doxygen-1.8.11.linux.bin.tar.gz" | tar -xz;
+    cd "$build_dir/doxygen-1.8.11"
+    ./configure --prefix "$install_dir"
+    {
+      make $make_args install > /dev/null
+    } || {
+      :
+    }
+}
+
+install_dependency()
+{
+    echo "--> Compiling $1"
+    mkdir -p "$build_dir/$1"
+    cd "$build_dir"
+    branch=$2
+    $git_clone --branch $branch "git://github.com/$1" "$1"
+    cd "$build_dir/$1"
+    $git_submodule
+    mkdir build
+    cd build
+    cmake $cmake_args ..
+    make $make_args install > /dev/null
+}
+
+install_with_autoconf()
+{
+    echo "--> Compiling $1"
+    mkdir -p "$build_dir/$1"
+    cd "$build_dir"
+    branch=$2
+    $git_clone --branch $branch "git://github.com/$1" "$1"
+    cd "$build_dir/$1"
+    $git_submodule
+    ./bootstrap
+    mkdir build
+    cd build
+    ../configure --prefix=${DEVEL_DIR}/install
+    make $make_args install > /dev/null
+}
+
+# Install dependencies
+
+wget --quiet -O $DEVEL_DIR/config.sh https://raw.githubusercontent.com/humanoid-path-planner/hpp-doc/${TRAVIS_BRANCH}/doc/config.sh
+set +ev
+echo "Silently source ${DEVEL_DIR}/config.sh"
+source $DEVEL_DIR/config.sh
+echo "Environment before build:"
+set -ev
+env
+
+install_doxygen
+install_eigen3
+
+install_dependency humanoid-path-planner/iai_maps                 ${TRAVIS_BRANCH}
+
+install_dep_from_tar "https://github.com/roboptim/roboptim-core/releases/download/v3.1/roboptim-core-3.1.tar.bz2" "roboptim-core-3.1" "-xj"
+install_dep_from_tar "https://github.com/roboptim/roboptim-trajectory/releases/download/v3.1/roboptim-trajectory-3.1.tar.bz2" "roboptim-trajectory-3.1" "-xj"
+
+install_dependency humanoid-path-planner/hpp-util                 ${TRAVIS_BRANCH}
+install_dependency humanoid-path-planner/hpp-fcl                  ${TRAVIS_BRANCH}
+install_dependency laas/hpp-template-corba                        ${TRAVIS_BRANCH}
+
+install_dependency humanoid-path-planner/hpp-model                ${TRAVIS_BRANCH}
+install_dependency humanoid-path-planner/qpOASES                  ${TRAVIS_BRANCH}
+install_dependency humanoid-path-planner/hpp-constraints          ${TRAVIS_BRANCH}
+install_dependency humanoid-path-planner/hpp-statistics           ${TRAVIS_BRANCH}
+install_dependency humanoid-path-planner/hpp-core                 ${TRAVIS_BRANCH}
+install_dependency humanoid-path-planner/hpp-model-urdf           ${TRAVIS_BRANCH}
+install_dependency humanoid-path-planner/hpp-corbaserver          ${TRAVIS_BRANCH}
+
+install_dependency humanoid-path-planner/hpp-walkgen              ${TRAVIS_BRANCH}
+install_dependency humanoid-path-planner/hpp-wholebody-step       ${TRAVIS_BRANCH}
+install_dependency humanoid-path-planner/hpp-wholebody-step-corba ${TRAVIS_BRANCH}
+
+install_dependency humanoid-path-planner/hpp-manipulation         ${TRAVIS_BRANCH}
+install_dependency humanoid-path-planner/hpp-manipulation-urdf    ${TRAVIS_BRANCH}
+install_dependency humanoid-path-planner/hpp-manipulation-corba   ${TRAVIS_BRANCH}
+
+install_dependency humanoid-path-planner/gepetto-viewer           ${TRAVIS_BRANCH}
+install_dependency humanoid-path-planner/gepetto-viewer-corba     ${TRAVIS_BRANCH}
+install_dependency humanoid-path-planner/hpp-gui                  ${TRAVIS_BRANCH}
+install_dependency humanoid-path-planner/hpp-gepetto-viewer       ${TRAVIS_BRANCH}
+
+# Compile and run tests
+cd "$build_dir"
+cmake "$root_dir" -DCMAKE_INSTALL_PREFIX="$install_dir"		\
+		  -DCMAKE_INSTALL_PREFIX:STRING="$install_dir"
+make $make_args
+# make $make_args test
+make $make_args install > /dev/null
+
+install_with_autoconf humanoid-path-planner/hpp-doc                ${TRAVIS_BRANCH}

@@ -73,7 +73,11 @@ install(FILES
 	urdf/robot_chaine.urdf
 	urdf/robot_telephone.urdf
 	urdf/robot_mesh.urdf
+	urdf/robot_big_mesh.urdf
 	urdf/robot_chaise.urdf
+	urdf/robot_siege.urdf
+	urdf/robot_strange.urdf
+	urdf/robot_cube_mesh.urdf
 	DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
   )
 install(FILES
@@ -91,16 +95,33 @@ install(FILES
 	srdf/robot_chaine.srdf
 	srdf/robot_telephone.srdf
 	srdf/robot_mesh.srdf
+	srdf/robot_big_mesh.srdf
 	srdf/robot_chaise.srdf
+	srdf/robot_siege.srdf
+	srdf/robot_strange.srdf
+	srdf/robot_cube_mesh.srdf
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/srdf
   )
 install(FILES
   meshes/box.dae
+  meshes/big_skull.dae
+  meshes/big_pelvis.stl
+  meshes/Skull_view.dae
+  meshes/pelvis.dae
+  meshes/pelvis.stl
   meshes/telephone.dae
   meshes/base.dae
   meshes/cone.dae
   meshes/cone_decal.dae
   meshes/cone_centre.dae
+  meshes/cubencvx.dae
+  meshes/Skull_view.dae
+  meshes/siege.dae
+  meshes/siege.stl
+  meshes/voiture_bleue.dae
+  meshes/strange.stl
+  meshes/cube.stl
+  meshes/tore.stl
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/meshes
   )
 install (FILES
@@ -125,7 +146,11 @@ install (FILES
 	src/hpp/corbaserver/nassime/robot_chaine.py
 	src/hpp/corbaserver/nassime/robot_telephone.py
 	src/hpp/corbaserver/nassime/robot_mesh.py
+	src/hpp/corbaserver/nassime/robot_big_mesh.py
 	src/hpp/corbaserver/nassime/robot_chaise.py
+	src/hpp/corbaserver/nassime/robot_siege.py
+	src/hpp/corbaserver/nassime/robot_strange.py
+	src/hpp/corbaserver/nassime/robot_cube_mesh.py
   src/hpp/corbaserver/nassime/__init__.py
   DESTINATION ${PYTHON_SITELIB}/hpp/corbaserver/nassime)
 

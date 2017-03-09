@@ -4,13 +4,13 @@
                   <visual>
                     <origin rpy="0 0 0" xyz="0 0 0"/>
                     <geometry>
-                      <mesh filename="package://hpp_tutorial/meshes/pelvis.stl"/>
+                      <mesh filename="package://hpp_tutorial/meshes/big_pelvis.stl"/>
                     </geometry>
                   </visual>
                   <collision> 
                     <origin rpy="0 0 0" xyz="0 0 0"/>
                     <geometry>
-                      <mesh filename="package://hpp_tutorial/meshes/pelvis.stl"/>
+                      <mesh filename="package://hpp_tutorial/meshes/big_pelvis.stl"/>
                     </geometry>
                   </collision> 
 		</link>

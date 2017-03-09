@@ -23,4 +23,8 @@ from robot_chaine import RobotChaine
 from robot_telephone import RobotTelephone
 from robot_3angles import Robot3Angles 
 from robot_mesh import RobotMesh 
+from robot_big_mesh import RobotBigMesh 
 from robot_chaise import RobotChaise 
+from robot_siege import RobotSiege 
+from robot_strange import RobotStrange 
+from robot_cube_mesh import RobotCubeMesh 

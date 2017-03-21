@@ -1,3 +1,4 @@
+
 from hpp.corbaserver import * 
 from hpp.corbaserver.nassime import RobotL
 #from hpp.corbaserver.nassime import RobotCursor

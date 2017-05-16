@@ -25,6 +25,7 @@ from robot_3angles import Robot3Angles
 from robot_mesh import RobotMesh 
 from robot_mesh_3angles import RobotMesh3angles
 from robot_mesh_L import RobotMeshL 
+from robot_mesh_E import RobotMeshE 
 from robot_big_mesh import RobotBigMesh 
 from robot_chaise import RobotChaise 
 from robot_siege import RobotSiege 

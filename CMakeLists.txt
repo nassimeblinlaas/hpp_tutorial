@@ -75,6 +75,7 @@ install(FILES
 	urdf/robot_mesh.urdf
 	urdf/robot_mesh_3angles.urdf
 	urdf/robot_mesh_L.urdf
+	urdf/robot_mesh_E.urdf
 	urdf/robot_big_mesh.urdf
 	urdf/robot_chaise.urdf
 	urdf/robot_siege.urdf
@@ -99,6 +100,7 @@ install(FILES
 	srdf/robot_mesh.srdf
 	srdf/robot_mesh_3angles.srdf
 	srdf/robot_mesh_L.srdf
+	srdf/robot_mesh_E.srdf
 	srdf/robot_big_mesh.srdf
 	srdf/robot_chaise.srdf
 	srdf/robot_siege.srdf
@@ -127,6 +129,7 @@ install(FILES
   meshes/cube.stl
   meshes/tore.stl
   meshes/robot_mesh_L.stl
+  meshes/robot_mesh_E.stl
   meshes/robot_3angles.stl
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/meshes
   )
@@ -154,6 +157,7 @@ install (FILES
 	src/hpp/corbaserver/nassime/robot_mesh.py
 	src/hpp/corbaserver/nassime/robot_mesh_3angles.py
 	src/hpp/corbaserver/nassime/robot_mesh_L.py
+	src/hpp/corbaserver/nassime/robot_mesh_E.py
 	src/hpp/corbaserver/nassime/robot_big_mesh.py
 	src/hpp/corbaserver/nassime/robot_chaise.py
 	src/hpp/corbaserver/nassime/robot_siege.py

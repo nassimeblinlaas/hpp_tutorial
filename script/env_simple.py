@@ -8,7 +8,7 @@ robot = Robot3Angles ('robot_L', True)
 #robot = RobotMesh ('robot_mesh', True)
 
 robot.setJointBounds ("base_joint_xyz", [-4, 12, -4, 12, -2, 4])
-robot.setJointBounds ("base_joint_xyz", [-4, 20, -4, 12, -2, 4])
+robot.setJointBounds ("base_joint_xyz", [-0, 10, -4, 12, -5, 5.8])
 robot.tf_root = 'base_link'
 
 from hpp.corbaserver import ProblemSolver
@@ -41,5 +41,5 @@ v.solveAndDisplay("rm1",1,white,0.05,1,brown)
 from hpp.gepetto import PathPlayer
 pp = PathPlayer (robot.client, v)
 v(q_goal)
-pp (0)
-#pp (1)
+#pp (0)
+pp (1)

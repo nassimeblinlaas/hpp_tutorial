@@ -35,7 +35,7 @@ class RobotMesh (Parent):
     packageName = "hpp_tutorial"
     ##
     #  Information to retrieve urdf and srdf files.
-    urdfName = "robot_mesh"
+    urdfName = "robot_cube_mesh"
     urdfSuffix = ""
     srdfSuffix = ""
 

@@ -11,7 +11,7 @@ robot = RobotMeshE ('robot_mesh_E', True)
 #from hpp.corbaserver.nassime import RobotStrange
 #robot = RobotStrange ('robot_strange', True)
 
-robot.setJointBounds ("base_joint_xyz", [-0.5, 0.50, -0.50, 0.4, -0.3, 0.3])#pour les petits meshs
+robot.setJointBounds ("base_joint_xyz", [-0.4, 0.70, -0.50, 0.4, -0.3, 0.3])#pour les petits meshs
 robot.tf_root = 'base_link'
 
 from hpp.corbaserver import ProblemSolver
@@ -28,10 +28,14 @@ q_init [0:7] = [0.0,0.0,0.2,0,1,0,0]
 q_goal [0:7] = [-0.26, 0.03, 0.06, 1, 0, 0, 0]
 #insertion2
 q_goal [0:7] = [-0.07, 0.03, -0.01, 1, 0, 0, 0]
-q_goal [0:7] = [-0.07, 0.035, -0.01, 1, 0, 0, 0]
+q_goal [0:7] = [-0.07, 0.038, -0.01, 1, 0, 0, 0] # pour bloc
+q_goal [0:7] = [-0.27, 0.055, -0.01, 1, 0, 0, 0] # pour bloc_bloc
 v (q_goal)
 
 v.loadObstacleModel ("iai_maps", "env_mesh_insertion", "simple")
+#v.loadObstacleModel ("iai_maps", "env_mesh_insertion_bloc", "simple")
+#v.loadObstacleModel ("iai_maps", "env_mesh_insertion_bloc_bloc", "simple")
+#v.loadObstacleModel ("iai_maps", "env_mesh_insertion_bloc_bloc_bloc", "simple")
 #v.loadObstacleModel ("iai_maps", "env_mesh_roman_e", "simple")
 
 ps.setInitialConfig (q_init)

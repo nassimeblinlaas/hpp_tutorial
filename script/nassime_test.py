@@ -31,7 +31,7 @@ ps.selectPathPlanner("interactive")
 white=[1.0,1.0,1.0,1.0]
 brown=[0,0,0,1]
 ps.addPathOptimizer ("RandomShortcut")
-v.solveAndDisplay("rm1",50,white,0.0,1,brown)
+v.solveAndDisplay("rm1",50,white,0.000,1,brown)
 #ps.solve()
 
 from hpp.gepetto import PathPlayer

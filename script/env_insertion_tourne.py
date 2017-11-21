@@ -24,14 +24,11 @@ q_goal = q_init [::]
 
 q_init [0:7] = [0.0,0.0,0.2,0,1,0,0]
 #v (q_init)
-#insertion1
-q_goal [0:7] = [-0.26, 0.03, 0.06, 1, 0, 0, 0]
-#insertion2
-q_goal [0:7] = [-0.07, 0.03, -0.01, 1, 0, 0, 0]
-q_goal [0:7] = [-0.07, 0.035, -0.01, 1, 0, 0, 0]
+q_goal [0:7] = [-0.25, 0.055, -0.01, 1, 0, 0, 0] # pour inser_tourne2
+q_goal [0:7] = [-0.25, 0.07, -0.01, 1, 0, 0, 0]
 v (q_goal)
 
-v.loadObstacleModel ("iai_maps", "env_mesh_insertion", "simple")
+v.loadObstacleModel ("iai_maps", "env_mesh_insertion_tourne", "simple")
 #v.loadObstacleModel ("iai_maps", "env_mesh_roman_e", "simple")
 
 ps.setInitialConfig (q_init)

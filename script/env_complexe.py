@@ -17,7 +17,7 @@ v (q_init)
 q_goal [0:7] = [10, 6, 0.11, 0.707460067, 0.706753314, 0, 0]
 q_goal [0:7] = [9.7, 6, 0.11, 0.707460067, 0.706753314, 0, 0]
 
-#v (q_goal)
+v (q_goal)
 
 v.loadObstacleModel ("iai_maps", "env_complexe", "simple")
 
@@ -32,7 +32,7 @@ brown=[0.85,0.75,0.15,0.5]
 black=[0, 0, 0, 1]
 
 ps.addPathOptimizer ("RandomShortcut")
-v.solveAndDisplay("rm1",50,white,0.01,1,black)
+v.solveAndDisplay("rm1",50,white,0.00,1,black)
 
 from hpp.gepetto import PathPlayer
 pp = PathPlayer (robot.client, v)
